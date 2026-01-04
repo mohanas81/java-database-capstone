@@ -82,6 +82,7 @@
   "createdAt": ISODate("2026-01-04T10:30:00Z"),
   "updatedAt": ISODate("2026-01-04T10:30:00Z")
 }
+```
 
 ### Collection : feedback
 ```json
@@ -94,6 +95,7 @@
   "createdAt": ISODate("2026-01-04T10:30:00Z"),
   "updatedAt": ISODate("2026-01-04T10:30:00Z")
 }
+```
 
 ### Collection : logs 
 ```json
@@ -104,3 +106,4 @@
   "createdAt": ISODate("2026-01-04T10:30:00Z"),
   "updatedAt": ISODate("2026-01-04T10:30:00Z")
 }
+```
