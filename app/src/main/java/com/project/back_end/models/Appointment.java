@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "adppointments")
+@Table(name = "adppointment")
 public class Appointment {
     // @Entity annotation:
 //    - Marks the class as a JPA entity, meaning it represents a table in the database.
