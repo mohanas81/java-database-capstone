@@ -107,3 +107,14 @@
   "updatedAt": ISODate("2026-01-04T10:30:00Z")
 }
 ```
+
+### Collections : messages
+```json
+{
+  "_id": ObjectId("..."),
+  "senderId": 1001,
+  "receiverId": 2001,
+  "message": "Hello, how are you?",
+  "createdAt": ISODate("2026-01-04T10:30:00Z"),
+  "updatedAt": ISODate("2026-01-04T10:30:00Z")
+}
