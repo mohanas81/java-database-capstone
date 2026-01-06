@@ -1,5 +1,6 @@
 package com.project.back_end.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -42,7 +43,8 @@ public class Doctor {
     @Column(nullable = false, unique = true)
     private String phone;
 
-    @ElementCollection
+
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "doctor_available_times", joinColumns = @JoinColumn(name = "doctor_id"))
     @Column(name = "time_slot")
     private List<String> availableTimes;
