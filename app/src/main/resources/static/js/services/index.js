@@ -19,6 +19,7 @@ window.closeModal = closeModal;
 // Define constants for the admin and doctor login API endpoints using the base URL
 const ADMIN_API = `${API_BASE_URL}/admin/login`;
 const DOCTOR_API = `${API_BASE_URL}/doctor/login`;
+const PATIENT_API = `${API_BASE_URL}/patient/login`;
 
 // Use the window.onload event to ensure DOM elements are available after page load
 window.onload = function() {
@@ -184,6 +185,64 @@ window.doctorLoginHandler = async function() {
   } catch (error) {
     // Step 6: Log the error to the console
     console.error('Doctor login error:', error);
+    // Show a generic error message
+    alert('An error occurred during login. Please try again later.');
+  }
+};
+
+window.patientLoginHandler = async function() {
+  // Step 6: Wrap in a try-catch block to handle errors gracefully
+  try {
+    // Step 1: Get the entered email and password from the input fields
+    const email = document.getElementById('patientEmail').value;
+    const password = document.getElementById('patientPassword').value;
+
+    // Validate that fields are not empty
+    if (!email || !password) {
+      alert('Please enter both email and password');
+      return;
+    }
+
+    // Step 2: Create a doctor object with these credentials
+    const patient = {
+      email: email,
+      password: password
+    };
+
+    // Step 3: Use fetch() to send a POST request to the DOCTOR_API endpoint
+    const response = await fetch(PATIENT_API, {
+      // Set method to POST
+      method: 'POST',
+      // Include headers with 'Content-Type: application/json'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      // Convert the doctor object to JSON and send in the body
+      body: JSON.stringify(patient)
+    });
+
+    // Step 4: If login is successful:
+    if (response.ok) {
+      // Parse the JSON response to get the token
+      const data = await response.text();
+      console.log("patientLoginHandler  "+data)
+      // Store the token in localStorage
+      localStorage.setItem('token', data);
+
+      // Call selectRole('doctor') to proceed with doctor-specific behavior
+      selectRole('patient');
+
+      // Optional: Show success message
+      alert('Patient login successful!');
+    } else {
+      // Step 5: If login fails:
+      // Show an alert for invalid credentials
+      alert('Invalid credentials! Please check your email and password.');
+    }
+
+  } catch (error) {
+    // Step 6: Log the error to the console
+    console.error('Patient login error:', error);
     // Show a generic error message
     alert('An error occurred during login. Please try again later.');
   }

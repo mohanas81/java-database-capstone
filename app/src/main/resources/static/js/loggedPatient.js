@@ -95,7 +95,7 @@ document.getElementById("specialtyFilter").addEventListener("change", filterDoct
 
 function filterDoctorsOnChange() {
   const searchBar = document.getElementById("searchBar").value.trim();
-  const filterTime = document.getElementById("timeFilter").value;
+  const filterTime = document.getElementById("filterTime").value;
   const filterSpecialty = document.getElementById("specialtyFilter").value;
 
 
